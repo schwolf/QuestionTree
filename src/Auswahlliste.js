@@ -8,7 +8,7 @@ export default class Auswahlliste extends Component {
             selectedMoeglichkeit = frage.moeglichkeiten.find((item) => { return frage.antwort === item.value });
         
         // Unterfrage nur anzeigen wenn für die ausgewählte Antwort eine Unterfrage existiert
-        let frageComponent = selectedMoeglichkeit && selectedMoeglichkeit.unterfrage
+        let unterFrage = selectedMoeglichkeit && selectedMoeglichkeit.unterfrage
             ? <Frage frage={selectedMoeglichkeit.unterfrage} onChangeAntwort={this.props.onChangeAntwort} />
             : null;
 
@@ -22,7 +22,7 @@ export default class Auswahlliste extends Component {
                         );
                     }) }
                 </select>
-                {frageComponent}
+                {unterFrage}
             </div>
         )
     }

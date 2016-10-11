@@ -9,22 +9,22 @@ export default class JaNeinRadioBtns extends Component {
             <div>
                 { frage.moeglichkeiten.map((moeglichkeit, i) => {
                     
-                    // Unterfrage nur anzeigen wenn existent und die ausgewählte möglichkeit der antwort entspricht
+                    // Unterfrage nur anzeigen wenn existent und der Antwort entspricht
                     
-                    const frageComponent = moeglichkeit.unterfrage && frage.antwort === moeglichkeit.value
+                    const unterFrage = moeglichkeit.unterfrage && frage.antwort === moeglichkeit.value
                             ? <Frage frage={moeglichkeit.unterfrage} onChangeAntwort={this.props.onChangeAntwort} />
                             : null;
                     
                     return (
                         <div key={i}>
                             <input type="radio"
-                                name={'grp' + frage.id}
-                                defaultChecked={ frage.antwort === moeglichkeit.value }
+                                name={frage.id}
+                                checked={ frage.antwort === moeglichkeit.value }
                                 onChange={() => this.props.onChangeAntwort(frage, moeglichkeit.value) } />
 
                             <label>{moeglichkeit.text}</label>
                             
-                            {frageComponent}
+                            {unterFrage}
 
                         </div>
                     )

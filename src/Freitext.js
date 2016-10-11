@@ -6,5 +6,6 @@ export default class Freitext extends Component {
         return (
             <input type='text' value={frage.antwort || ''} onChange={ev => { this.props.onChangeAntwort(frage, ev.target.value); }} />
         )
+        // Unterfragen für Freitext-Komponenten existieren aktuell nicht.
     }
 }

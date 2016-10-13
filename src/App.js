@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import fragen from './fragen';
-import Auswahlliste from './Auswahlliste';
-import JaNeinRadioBtns from './JaNeinRadioBtns';
-import Freitext from './Freitext';
-
+import Frage from './Frage';
 import './App.css';
 
 export default class App extends Component {
@@ -48,33 +45,15 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        { this.state.fragen.map((frage) => {
-          let control;
-          
-          switch (frage.type) {
-            case 'bool':
-              control = <JaNeinRadioBtns />
-              break;
-            case 'select':
-              control = <Auswahlliste />
-              break;
-            case 'text':
-              control = <Freitext />
-              break;
-            default:
-              break;
-          }
-          control = React.cloneElement(control, { frage: frage, onChangeAntwort: (f,a ) => this.handleChangeAntwort(f, a) });
-
+        {this.state.fragen.map((frage) => {
           return (
-            <div key={frage.id} className='frage'>
-              { frage.fragenText }
-              { control }
+            <div key={frage.id} className='fragecontainer'>
+              <Frage frage={frage} onChangeAntwort={(f, a) => this.handleChangeAntwort(f, a)} />
             </div>
           )
-        }) }
-        <br/>
-        <button onClick={ () => { console.log(this.state) } }>Log state</button>
+        })}
+        <br />
+        <button onClick={() => { console.log(this.state) } }>Log state</button>
       </div>
     );
   }

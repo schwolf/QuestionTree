@@ -23,7 +23,16 @@
   to { transform: rotate(360deg); }
 }
 
-.frage {
-  padding: 20px 80px 20px 80px;
+.fragecontainer {
+  padding: 20px 0 20px 0;
   border-bottom: dotted 1px;
 }
+
+.frage {
+  padding-left: 80px;
+  padding-top: 10px;
+}
+
+
+
+

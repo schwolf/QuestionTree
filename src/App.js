@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import fragen from './fragen';
 import Frage from './Frage';
 import './App.css';
+import { changeAntwort } from './stateFunctions'
 
 export default class App extends Component {
   constructor(props) {
@@ -17,35 +18,15 @@ export default class App extends Component {
     // frage.antwort = antwort;
     // this.setState(this.state);
 
-    const newState = Object.assign({}, this.state);
+    const newState = changeAntwort(this.state, frage.id, antwort)
 
-    this.setAntwort(newState.fragen, frage.id, antwort);
-
-    this.setState(newState);
-
-  }
-
-  setAntwort(fragenBaum, id, antwort) {
-    for (let i = 0; i < fragenBaum.length; i++) {
-      const frage = fragenBaum[i];
-      if (frage.id === id) {
-        frage.antwort = antwort;
-      }
-      else {
-        for (let j = 0; j < frage.moeglichkeiten.length; j++) {
-          const unterfrage = frage.moeglichkeiten[j].unterfrage;
-          if (unterfrage) {
-            this.setAntwort([unterfrage], id, antwort);
-          }
-        }
-      }
-    }
+    this.setState(newState)
   }
 
   render() {
     return (
       <div>
-        {this.state.fragen.map((frage) => {
+        {this.state.fragen.baum.map((frage) => {
           return (
             <div key={frage.id} className='fragecontainer'>
               <Frage frage={frage} onChangeAntwort={(f, a) => this.handleChangeAntwort(f, a)} />

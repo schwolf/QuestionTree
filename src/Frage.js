@@ -3,6 +3,9 @@ import Auswahlliste from './Auswahlliste';
 import JaNeinRadioBtns from './JaNeinRadioBtns';
 import Freitext from './Freitext';
 
+/**
+ * stateless function (makes components easiely reusable)
+ */
 export default function Frage(props) {
     let control;
 

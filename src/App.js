@@ -11,18 +11,6 @@ export default class App extends Component {
     this.state = { fragen: fragen };
   }
 
-  handleChangeAntwort(frage, antwort) {
-    // hier könnte man die Angaben des Anwenders auch noch an den Service posten.
-
-    // do not do it like this: works, but 
-    // frage.antwort = antwort;
-    // this.setState(this.state);
-
-    const newState = changeAntwort(this.state, frage.id, antwort)
-
-    this.setState(newState)
-  }
-
   render() {
     return (
       <div>
@@ -37,5 +25,17 @@ export default class App extends Component {
         <button onClick={() => { console.log(this.state) } }>Log state</button>
       </div>
     );
+  }
+
+  handleChangeAntwort(frage, antwort) {
+    // hier könnte man die Angaben des Anwenders auch noch an den Service posten.
+
+    // do not do it like this: seems to works only at first glance... 
+    // frage.antwort = antwort;
+    // this.setState(this.state);
+
+    const newState = changeAntwort(this.state, frage.id, antwort)
+
+    this.setState(newState)
   }
 }

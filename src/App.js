@@ -6,7 +6,7 @@ import { changeAntwort } from './stateFunctions'
 
 export default class App extends Component {
   constructor(props) {
-    // todo this must be a container component which performs an ajax request and passes the result to its child
+    // todo initial load via ajax
     super(props);
     this.state = { fragen: fragen };
   }
@@ -28,13 +28,17 @@ export default class App extends Component {
   }
 
   handleChangeAntwort(frage, antwort) {
-    // hier könnte man die Angaben des Anwenders auch noch an den Service posten.
 
     // do not do it like this: seems to works only at first glance... 
     // frage.antwort = antwort;
     // this.setState(this.state);
 
     const newState = changeAntwort(this.state, frage.id, antwort)
+
+    // hier könnte man auch noch:
+    // - die Angaben des Anwenders auch noch an den Service posten.
+    // - den Fragenbaum mit Unterfragen ergänzen (ggf. mit wait-control)
+    // Dann sollte man evtl. mit Container und Presentational Komponenten arbeiten.
 
     this.setState(newState)
   }

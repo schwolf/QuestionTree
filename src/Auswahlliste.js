@@ -7,7 +7,7 @@ export default function Auswahlliste(props) {
         selectedMoeglichkeit = frage.moeglichkeiten.find((item) => { return frage.antwort === item.value });
 
     // Unterfrage nur anzeigen wenn für die ausgewählte Antwort eine Unterfrage existiert
-    let unterFrage = selectedMoeglichkeit && selectedMoeglichkeit.unterfrage
+    const unterFrage = selectedMoeglichkeit && selectedMoeglichkeit.unterfrage
         ? <Frage frage={selectedMoeglichkeit.unterfrage} onChangeAntwort={props.onChangeAntwort} />
         : null;
 
@@ -21,7 +21,9 @@ export default function Auswahlliste(props) {
                     );
                 })}
             </select>
+
             {unterFrage}
+
         </div>
     )
 }

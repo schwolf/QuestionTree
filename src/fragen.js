@@ -159,6 +159,8 @@ export default {
 
         setAntwortInTeilbaum(this.baum);
 
+        // todo remove answers in lower levels that are not valid anymore.
+
         function setAntwortInTeilbaum(teilBaum) {
             for (let i = 0; i < teilBaum.length; i++) {
                 const frage = teilBaum[i];

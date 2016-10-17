@@ -35,19 +35,15 @@ export default class App extends Component {
     // frage.antwort = antwort;
     // this.setState(this.state);
 
-    const newState = changeAntwort(this.state, frage.id, antwort, this.getUnterfragenDummy)
-
-    // hier könnte man auch noch:
-    // - die Angaben des Anwenders auch noch an den Service posten.
-    // - den Fragenbaum mit Unterfragen ergänzen (ggf. mit wait-control)
-    // Dann sollte man evtl. mit Container und Presentational Komponenten arbeiten.
+    const newState = changeAntwort(this.state, frage.id, antwort, () => this.getUnterfragenDummy(frage.id))
 
     this.setState(newState)
   }
 
-  getUnterfragenDummy() {
+  getUnterfragenDummy(parentFrageId) {
     console.log('requesting Unterfrage...')
     // setTimeout simulates the ajax request
+    // think about extracting this to a container component
     window.setTimeout(() => {
       console.log('requested Unterfrage...')
 
@@ -67,7 +63,7 @@ export default class App extends Component {
           }]
       }
 
-      const newState = extendFragenbaum(this.state, neueFrage)
+      const newState = extendFragenbaum(this.state, neueFrage, parentFrageId)
       this.setState(newState)
 
     }, 2000)

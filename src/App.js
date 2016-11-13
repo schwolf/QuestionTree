@@ -43,11 +43,12 @@ export default class App extends Component {
     // UNTERFRAGEN_FETCH_REQUESTED => aktiviert das loading-flag
     // UNTERFRAGEN_FETCH_SUCCEEDED => hängt die unterfrage an und deaktivert das loading-flag 
 
-
-
-    const newState = changeAntwort(this.state, frage.id, antwort, () => this.getUnterfragenDummy(frage.id))
+    const newState = changeAntwort(this.state, frage.id, antwort)
 
     this.setState(newState)
+
+    this.getUnterfragenDummy(frage.id)
+
   }
 
   getUnterfragenDummy(parentFrageId) {

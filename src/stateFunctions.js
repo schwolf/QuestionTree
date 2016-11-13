@@ -19,7 +19,6 @@ export function extendFragenbaum(state, neueFrage, parentFrageId) {
     const newState = Object.assign({}, state.fragen)
     // todo: do not simply push new question. instead extend parent question (see parentFrageId)
     // newState.extendBaum(neueFrage, parentFrageId)
-    console.log('Parent Frage: ' + parentFrageId)
     newState.baum.push(neueFrage)
     return newState
 }

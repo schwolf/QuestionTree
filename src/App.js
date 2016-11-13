@@ -31,9 +31,19 @@ export default class App extends Component {
 
   handleChangeAntwort(frage, antwort) {
 
-    // do not do it like this: seems to works only at first glance... 
-    // frage.antwort = antwort;
-    // this.setState(this.state);
+    // das triggert zukünftig lediglich die action ANTWORT_CHANGE
+    // die saga hört auf ANTWORT_CHANGE actions und feuert eine UNTERFRAGEN_FETCH_REQUESTED action
+    //    yield put({ type: 'UNTERFRAGEN_FETCH_REQUESTED', frage.id })
+    // die saga holt die unterfrage via fetch-api
+    //    try { const unterfragen = yield call(Api.fetch, '/4711/unterfragen')
+    // die saga feuert die UNTERFRAGEN_FETCH_SUCCEEDED bzw. die UNTERFRAGEN_FETCH_FAILED action
+    //    yield put({ type: 'UNTERFRAGEN_FETCH_SUCCEEDED', unterfragen })
+    // reducer: 
+    // ANTWORT_CHANGE => setzt die antwort
+    // UNTERFRAGEN_FETCH_REQUESTED => aktiviert das loading-flag
+    // UNTERFRAGEN_FETCH_SUCCEEDED => hängt die unterfrage an und deaktivert das loading-flag 
+
+
 
     const newState = changeAntwort(this.state, frage.id, antwort, () => this.getUnterfragenDummy(frage.id))
 
@@ -45,8 +55,6 @@ export default class App extends Component {
     // setTimeout simulates the ajax request
     // think about extracting this to a container component
     window.setTimeout(() => {
-      console.log('requested Unterfrage...')
-
       const neueFrage = {
         id: '4be1fdb3-cd8d-4527-b273-0b3341df4e2c',
         type: 'bool',

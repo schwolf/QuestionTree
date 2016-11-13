@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import fragen from './fragen';
 import Frage from './Frage';
-import './App.css';
+//import './App.css';
 import { changeAntwort, extendFragenbaum } from './stateFunctions'
 
 export default class App extends Component {

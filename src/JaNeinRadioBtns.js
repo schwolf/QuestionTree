@@ -1,8 +1,7 @@
 import React from 'react';
 import Frage from './Frage';
 
-export default function JaNeinRadioBtns(props) {
-    const frage = props.frage;
+export default function JaNeinRadioBtns({frage}) {
     return (
         <div>
             {frage.moeglichkeiten.map((moeglichkeit, index) => {

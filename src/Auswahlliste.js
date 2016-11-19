@@ -4,7 +4,7 @@ import Frage from './Frage';
 // stateless func
 export default function Auswahlliste(props) {
     const frage = props.frage,
-        selectedMoeglichkeit = frage.moeglichkeiten.find((item) => { return frage.antwort === item.value });
+        selectedMoeglichkeit = frage.moeglichkeiten.find(item => frage.antwort === item.value);
 
     // Unterfrage nur anzeigen wenn für die ausgewählte Antwort eine Unterfrage existiert
     const unterFrage = selectedMoeglichkeit && selectedMoeglichkeit.unterfrage

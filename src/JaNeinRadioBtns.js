@@ -5,7 +5,7 @@ export default function JaNeinRadioBtns(props) {
     const frage = props.frage;
     return (
         <div>
-            {frage.moeglichkeiten.map((moeglichkeit, i) => {
+            {frage.moeglichkeiten.map((moeglichkeit, index) => {
                 // Unterfrage nur anzeigen wenn existent und der Antwort entspricht
 
                 const unterFrage = moeglichkeit.unterfrage && frage.antwort === moeglichkeit.value
@@ -13,7 +13,7 @@ export default function JaNeinRadioBtns(props) {
                     : null;
 
                 return (
-                    <div key={i}>
+                    <div key={index}>
                         <input type="radio"
                             name={frage.id}
                             checked={frage.antwort === moeglichkeit.value}

@@ -24,7 +24,7 @@ export default class App extends Component {
           )
         })}
         <br />
-        <button onClick={() => { console.log(this.state) } }>Log state</button>
+        <button onClick={() => console.log(this.state)}>Log state</button>
       </div>
     );
   }
